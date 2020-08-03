@@ -13,7 +13,7 @@ $(document).ready(function(){
       },
       992:{
         dots: false,
-        items:3
+        items:2
       }
   }
   })
