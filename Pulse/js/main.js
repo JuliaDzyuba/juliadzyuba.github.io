@@ -8,12 +8,12 @@ $(document).ready(function(){
           dots: true
       },
       768:{
-          //items:3
+          items:1,
           dots: true
       },
       992:{
         dots: false
-          //items:5
+        items:3
       }
   }
   })
