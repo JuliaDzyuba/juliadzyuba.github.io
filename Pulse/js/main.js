@@ -12,7 +12,7 @@ $(document).ready(function(){
           dots: true
       },
       992:{
-        dots: false
+        dots: false,
         items:3
       }
   }
