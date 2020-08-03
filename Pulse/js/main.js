@@ -129,7 +129,38 @@ $(document).ready(function(){
   $('input[name=user_phone]').mask("(999)999-99-99");
 
   // Mailer
-  $('form').submit(function(e) {
+  let forms = document.querySelectorAll('form');
+  
+  let overlay = document.querySelector('.overlay');
+  let thanks = document.querySelector('#thanks');
+  let consultation = document.querySelector('#consultation');
+  let order = document.querySelector('#order');
+
+  forms.forEach( form => {
+  	form.addEventListener('submit', submitHandler)
+    function submitHandler(e){
+    	e.preventDefault();
+        fetch("mailer/smart.php", {
+            method: "POST",
+            body: new FormData(form)
+        })
+            // .then(response => response.json())
+            // .then(function(json) {  form.reset(); })
+            .catch(function(error) { console.log(error); });
+        form.reset();
+        // console.log(consultation);
+        // console.log(order);
+        if(form.closest('#consultation') || form.closest('#order')){
+        	consultation.style.display = 'none';
+        	order.style.display = 'none';
+        }
+        overlay.style.display = 'block';
+        thanks.style.display = 'block';
+    };
+});
+    
+
+  /*$('form').submit(function(e) {
     e.preventDefault();
     $.ajax({
       type: "POST",
@@ -145,6 +176,7 @@ $(document).ready(function(){
     return false;
 
   });
+  */
 
   //Scrolling
 
